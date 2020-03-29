@@ -22,6 +22,7 @@ namespace Prism.Test
         // INavigationAware
         public virtual void OnNavigatedFrom(INavigationParameters parameters)
         {
+            UnsubscribeFromEvents();
         }
 
         // INavigationAware
@@ -32,10 +33,19 @@ namespace Prism.Test
         // INavigationAware
         public virtual void OnNavigatedTo(INavigationParameters parameters)
         {
+            SubscribeToEvents();
         }
 
         // IDestructible
         public virtual void Destroy()
+        {
+        }
+
+        protected virtual void SubscribeToEvents()
+        {
+        }
+
+        protected virtual void UnsubscribeFromEvents()
         {
         }
     }

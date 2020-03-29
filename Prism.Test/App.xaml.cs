@@ -22,6 +22,14 @@ namespace Prism.Test
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<HomeView, HomeViewModel>();
+
+            containerRegistry.RegisterSingleton<ILeftViewModel, LeftViewModel>();
+            containerRegistry.RegisterSingleton<ICenterViewModel, CenterViewModel>();
+            containerRegistry.RegisterSingleton<IRightViewModel, RightViewModel>();
+
+            containerRegistry.RegisterSingleton<ILeftViewModelPropertyChangedHandler, LeftViewModelPropertyChangedHandler>();
+            containerRegistry.RegisterSingleton<ICenterViewModelPropertyChangedHandler, CenterViewModelPropertyChangedHandler>();
+            containerRegistry.RegisterSingleton<IRightViewModelPropertyChangedHandler, RightViewModelPropertyChangedHandler>();
         }
     }
 }

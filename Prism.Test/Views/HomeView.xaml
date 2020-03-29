@@ -14,28 +14,36 @@
 
             <Frame
                 Grid.Column="0"
-                BindingContext="{Binding LeftViewMolel}"
+                BindingContext="{Binding LeftViewModel}"
                 VerticalOptions="Fill">
                 <Entry
                     Margin="0,15,0,0"
                     HorizontalOptions="Center"
-                    Placeholder="Enter your text"
+                    Placeholder="{Binding Placeholder}"
                     Text="{Binding InputText}"
                     VerticalOptions="Start" />
             </Frame>
 
-            <Frame Grid.Column="1" BindingContext="{Binding CenterViewMolel}">
+            <Frame
+                Grid.Column="1"
+                BindingContext="{Binding CenterViewModel}"
+                VerticalOptions="Fill">
                 <Label
                     Margin="0,15,0,0"
-                    HorizontalOptions="StartAndExpand"
-                    Text="{Binding Text}" />
+                    HorizontalOptions="Center"
+                    Text="{Binding Text}"
+                    VerticalOptions="Start" />
             </Frame>
 
-            <Frame Grid.Column="2" BindingContext="{Binding RightViewMolel}">
+            <Frame
+                Grid.Column="2"
+                BindingContext="{Binding RightViewModel}"
+                VerticalOptions="Fill">
                 <Label
                     Margin="0,15,0,0"
-                    HorizontalOptions="StartAndExpand"
-                    Text="{Binding StaticText}" />
+                    HorizontalOptions="Center"
+                    Text="{Binding StaticText}"
+                    VerticalOptions="Start" />
             </Frame>
         </Grid>
 

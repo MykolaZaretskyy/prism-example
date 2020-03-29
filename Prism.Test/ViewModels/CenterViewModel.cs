@@ -4,7 +4,7 @@ namespace Prism.Test
 {
     public class CenterViewModel : BindableBase, ICenterViewModel
     {
-        private string _centerText;
+        private string _centerText = string.Empty;
 
         public CenterViewModel()
         {

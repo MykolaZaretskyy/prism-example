@@ -4,7 +4,7 @@ namespace Prism.Test
 {
     public class LeftViewModel : BindableBase, ILeftViewModel
     {
-        private string _inputText;
+        private string _inputText = string.Empty;
 
         public LeftViewModel()
         {
@@ -15,5 +15,7 @@ namespace Prism.Test
             get => _inputText;
             set => SetProperty(ref _inputText, value);
         }
+
+        public string Placeholder { get; } = "My Placeholder";
     }
 }
