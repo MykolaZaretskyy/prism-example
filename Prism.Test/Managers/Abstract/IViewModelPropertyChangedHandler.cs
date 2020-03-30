@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Prism.Test
+namespace Prism.Test.Managers.Abstract
 {
     public interface IViewModelPropertyChangedHandler
     {

@@ -1,10 +1,11 @@
 ﻿using Prism.Mvvm;
+using Prism.Test.ViewModels.Abstract;
 
-namespace Prism.Test
+namespace Prism.Test.ViewModels
 {
     public class CenterViewModel : BindableBase, ICenterViewModel
     {
-        private string _centerText = string.Empty;
+        private string _centerText = "Initial text";
 
         public CenterViewModel()
         {

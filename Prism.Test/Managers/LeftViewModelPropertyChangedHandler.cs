@@ -1,6 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
+using Prism.Test.Managers.Abstract;
+using Prism.Test.ViewModels.Abstract;
 
-namespace Prism.Test
+namespace Prism.Test.Managers
 {
     public class LeftViewModelPropertyChangedHandler : ILeftViewModelPropertyChangedHandler
     {
@@ -8,8 +12,7 @@ namespace Prism.Test
         private readonly ICenterViewModel centerViewModel;
         private readonly IRightViewModel rightViewModel;
 
-        public LeftViewModelPropertyChangedHandler(ILeftViewModel leftViewModel,
-            ICenterViewModel centerViewModel,
+        public LeftViewModelPropertyChangedHandler(ILeftViewModel leftViewModel, ICenterViewModel centerViewModel,
             IRightViewModel rightViewModel)
         {
             this.leftViewModel = leftViewModel;
@@ -19,6 +22,7 @@ namespace Prism.Test
 
         public Task<bool> OnPropertyChanged(string propertyName)
         {
+            Debug.WriteLine($"CurrentThreadId = {Environment.CurrentManagedThreadId}");
             switch (propertyName)
             {
                 case nameof(ILeftViewModel.InputText):

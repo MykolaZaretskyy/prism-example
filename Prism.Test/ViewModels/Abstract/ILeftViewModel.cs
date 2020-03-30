@@ -1,6 +1,6 @@
-﻿namespace Prism.Test
+﻿namespace Prism.Test.ViewModels.Abstract
 {
-    public interface ILeftViewModel
+    public interface ILeftViewModel : IViewModel
     {
         string InputText { get; set; }
     }

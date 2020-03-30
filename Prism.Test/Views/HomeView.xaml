@@ -31,7 +31,7 @@
                 <Label
                     Margin="0,15,0,0"
                     HorizontalOptions="Center"
-                    Text="{Binding Text}"
+                    Text="{Binding CenterText}"
                     VerticalOptions="Start" />
             </Frame>
 
@@ -42,7 +42,7 @@
                 <Label
                     Margin="0,15,0,0"
                     HorizontalOptions="Center"
-                    Text="{Binding StaticText}"
+                    Text="{Binding RightText}"
                     VerticalOptions="Start" />
             </Frame>
         </Grid>

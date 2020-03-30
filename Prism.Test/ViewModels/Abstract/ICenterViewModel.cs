@@ -1,6 +1,6 @@
-﻿namespace Prism.Test
+﻿namespace Prism.Test.ViewModels.Abstract
 {
-    public interface ICenterViewModel
+    public interface ICenterViewModel : IViewModel
     {
         string CenterText { get; set; }
     }
