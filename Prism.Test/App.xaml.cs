@@ -1,5 +1,6 @@
 ﻿using Prism.Autofac;
 using Prism.Ioc;
+using Prism.Test.Infrastracture;
 using Prism.Test.Managers;
 using Prism.Test.Managers.Abstract;
 using Prism.Test.ViewModels;
@@ -27,13 +28,15 @@ namespace Prism.Test
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<HomeView, HomeViewModel>();
 
-            //containerRegistry.RegisterSingleton<ILeftViewModel, LeftViewModel>();
-            //containerRegistry.RegisterSingleton<ICenterViewModel, CenterViewModel>();
-            //containerRegistry.RegisterSingleton<IRightViewModel, RightViewModel>();
-
             containerRegistry.RegisterSingleton<ILeftViewModelPropertyChangedHandler, LeftViewModelPropertyChangedHandler>();
             containerRegistry.RegisterSingleton<ICenterViewModelPropertyChangedHandler, CenterViewModelPropertyChangedHandler>();
             containerRegistry.RegisterSingleton<IRightViewModelPropertyChangedHandler, RightViewModelPropertyChangedHandler>();
+
+            containerRegistry.RegisterSingleton<IPropertyChangedDipatcher, PropertyChangedDipatcher>();
+
+            containerRegistry.RegisterSingleton<ILeftViewModel, LeftViewModel>();
+            containerRegistry.RegisterSingleton<ICenterViewModel, CenterViewModel>();
+            containerRegistry.RegisterSingleton<IRightViewModel, RightViewModel>();
         }
     }
 }

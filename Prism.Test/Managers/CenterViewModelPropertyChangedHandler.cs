@@ -2,20 +2,28 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Prism.Test.Managers.Abstract;
-using Prism.Test.ViewModels.Abstract;
 
 namespace Prism.Test.Managers
 {
-    public class CenterViewModelPropertyChangedHandler : ICenterViewModelPropertyChangedHandler
+    public class CenterViewModelPropertyChangedHandler : ICenterViewModelPropertyChangedHandler, ILeftViewModelPropertyChangedListener, IRightViewModelPropertyChangedListener
     {
         public CenterViewModelPropertyChangedHandler()
         {
         }
 
-        public Task<bool> OnPropertyChanged(string propertyName)
+        public Task<bool> OnSelfPropertyChanged(string propertyName)
         {
-            Debug.WriteLine($"CurrentThreadId = {Environment.CurrentManagedThreadId}");
-            return Task.FromResult(false);
+            throw new NotImplementedException();
+        }
+
+        Task<bool> ILeftViewModelPropertyChangedListener.OnPropertyChanged(string propertyName)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<bool> IRightViewModelPropertyChangedListener.OnPropertyChanged(string propertyName)
+        {
+            throw new NotImplementedException();
         }
     }
 }

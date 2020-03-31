@@ -21,5 +21,8 @@
     <Folder Include="Views\" />
     <Folder Include="Managers\" />
     <Folder Include="Managers\Abstract\" />
+    <Folder Include="ViewModels\Items\" />
+    <Folder Include="Views\Controls\" />
+    <Folder Include="Infrastracture\" />
   </ItemGroup>
 </Project>

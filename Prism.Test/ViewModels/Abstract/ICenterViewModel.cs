@@ -2,6 +2,5 @@
 {
     public interface ICenterViewModel : IViewModel
     {
-        string CenterText { get; set; }
     }
 }

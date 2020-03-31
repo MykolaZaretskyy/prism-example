@@ -6,31 +6,28 @@ using Prism.Test.ViewModels.Abstract;
 
 namespace Prism.Test.Managers
 {
-    public class LeftViewModelPropertyChangedHandler : ILeftViewModelPropertyChangedHandler
+    public class LeftViewModelPropertyChangedHandler : ILeftViewModelPropertyChangedHandler, ICenterViewModelPropertyChangedListener, IRightViewModelPropertyChangedListener
     {
         private readonly ILeftViewModel leftViewModel;
-        private readonly ICenterViewModel centerViewModel;
-        private readonly IRightViewModel rightViewModel;
 
-        public LeftViewModelPropertyChangedHandler(ILeftViewModel leftViewModel, ICenterViewModel centerViewModel,
-            IRightViewModel rightViewModel)
+        public LeftViewModelPropertyChangedHandler(ILeftViewModel leftViewModel)
         {
             this.leftViewModel = leftViewModel;
-            this.centerViewModel = centerViewModel;
-            this.rightViewModel = rightViewModel;
         }
 
-        public Task<bool> OnPropertyChanged(string propertyName)
+        public Task<bool> OnSelfPropertyChanged(string propertyName)
         {
-            Debug.WriteLine($"CurrentThreadId = {Environment.CurrentManagedThreadId}");
-            switch (propertyName)
-            {
-                case nameof(ILeftViewModel.InputText):
-                    centerViewModel.CenterText = leftViewModel.InputText;
-                    return Task.FromResult(true);
-                default:
-                    return Task.FromResult(false);
-            }
+            throw new NotImplementedException();
+        }
+
+        Task<bool> ICenterViewModelPropertyChangedListener.OnPropertyChanged(string propertyName)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<bool> IRightViewModelPropertyChangedListener.OnPropertyChanged(string propertyName)
+        {
+            throw new NotImplementedException();
         }
     }
 }

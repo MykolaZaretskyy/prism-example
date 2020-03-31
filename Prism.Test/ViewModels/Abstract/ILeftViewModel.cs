@@ -2,6 +2,5 @@
 {
     public interface ILeftViewModel : IViewModel
     {
-        string InputText { get; set; }
     }
 }
