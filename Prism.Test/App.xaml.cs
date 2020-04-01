@@ -1,5 +1,7 @@
 ﻿using Prism.Autofac;
 using Prism.Ioc;
+using Prism.Test.ViewModels;
+using Prism.Test.ViewModels.Abstract;
 using Xamarin.Forms;
 
 namespace Prism.Test
@@ -11,7 +13,7 @@ namespace Prism.Test
 
         }
 
-        protected async override void OnInitialized()
+        protected override async void OnInitialized()
         {
             InitializeComponent();
 
@@ -22,6 +24,10 @@ namespace Prism.Test
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<HomeView, HomeViewModel>();
+
+            containerRegistry.RegisterSingleton<ILeftViewModel, LeftViewModel>();
+            containerRegistry.RegisterSingleton<ICenterViewModel, CenterViewModel>();
+            containerRegistry.RegisterSingleton<IRightViewModel, RightViewModel>();
         }
     }
 }

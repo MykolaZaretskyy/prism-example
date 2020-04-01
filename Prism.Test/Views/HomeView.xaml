@@ -2,7 +2,35 @@
     x:Class="Prism.Test.HomeView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Prism.Test.Views.Controls"
     Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="CategoryCell">
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding IsSelected}" />
+                        <Label
+                            Margin="15,0,0,0"
+                            Text="{Binding CategoryName}"
+                            VerticalOptions="Center" />
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+
+            <DataTemplate x:Key="SubCategoryCell">
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal">
+                        <Label
+                            Margin="15,0,0,0"
+                            Text="{Binding SubCategoryName}"
+                            VerticalOptions="Center" />
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ContentPage.Content>
         <Grid>
@@ -14,28 +42,32 @@
 
             <Frame
                 Grid.Column="0"
-                BindingContext="{Binding LeftViewMolel}"
+                BindingContext="{Binding LeftViewModel}"
                 VerticalOptions="Fill">
-                <Entry
+                <controls:CustomListView
+                    ItemSelectedCommand="{Binding CategorySelectedCommand}"
+                    ItemTemplate="{StaticResource CategoryCell}"
+                    ItemsSource="{Binding Categories}" />
+            </Frame>
+
+            <Frame
+                Grid.Column="1"
+                BindingContext="{Binding CenterViewModel}"
+                VerticalOptions="Fill">
+                <controls:CustomListView
+                    ItemTemplate="{StaticResource SubCategoryCell}"
+                    ItemsSource="{Binding SubCategories}" />
+            </Frame>
+
+            <Frame
+                Grid.Column="2"
+                BindingContext="{Binding RightViewModel}"
+                VerticalOptions="Fill">
+                <Label
                     Margin="0,15,0,0"
                     HorizontalOptions="Center"
-                    Placeholder="Enter your text"
-                    Text="{Binding InputText}"
+                    Text="{Binding RightText}"
                     VerticalOptions="Start" />
-            </Frame>
-
-            <Frame Grid.Column="1" BindingContext="{Binding CenterViewMolel}">
-                <Label
-                    Margin="0,15,0,0"
-                    HorizontalOptions="StartAndExpand"
-                    Text="{Binding Text}" />
-            </Frame>
-
-            <Frame Grid.Column="2" BindingContext="{Binding RightViewMolel}">
-                <Label
-                    Margin="0,15,0,0"
-                    HorizontalOptions="StartAndExpand"
-                    Text="{Binding StaticText}" />
             </Frame>
         </Grid>
 

@@ -1,19 +1,17 @@
 ﻿using Prism.Mvvm;
+using Prism.Test.Helpers;
+using Prism.Test.ViewModels.Abstract;
+using Prism.Test.ViewModels.Items;
 
-namespace Prism.Test
+namespace Prism.Test.ViewModels
 {
     public class CenterViewModel : BindableBase, ICenterViewModel
     {
-        private string _centerText;
-
-        public CenterViewModel()
+        public CenterViewModel() 
         {
+            SubCategories = new CustomObservableCollection<SubCategoryItemViewModel>();
         }
 
-        public string CenterText
-        {
-            get => _centerText;
-            set => SetProperty(ref _centerText, value);
-        }
+        public CustomObservableCollection<SubCategoryItemViewModel> SubCategories { get; }
     }
 }

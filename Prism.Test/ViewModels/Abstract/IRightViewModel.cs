@@ -1,7 +1,6 @@
-﻿namespace Prism.Test
+﻿namespace Prism.Test.ViewModels.Abstract
 {
     public interface IRightViewModel
     {
-        string RightText { get; }
     }
 }

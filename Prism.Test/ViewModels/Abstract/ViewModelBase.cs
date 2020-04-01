@@ -1,7 +1,7 @@
 ﻿using Prism.Mvvm;
 using Prism.Navigation;
 
-namespace Prism.Test
+namespace Prism.Test.ViewModels.Abstract
 {
     public class ViewModelBase : BindableBase, INavigationAware, IDestructible
     {

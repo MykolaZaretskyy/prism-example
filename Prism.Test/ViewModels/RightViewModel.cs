@@ -1,6 +1,7 @@
 ﻿using Prism.Mvvm;
+using Prism.Test.ViewModels.Abstract;
 
-namespace Prism.Test
+namespace Prism.Test.ViewModels
 {
     public class RightViewModel : BindableBase, IRightViewModel
     {
