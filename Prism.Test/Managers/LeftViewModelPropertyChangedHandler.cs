@@ -1,33 +1,44 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Text;
+using Prism.Events;
 using Prism.Test.Managers.Abstract;
-using Prism.Test.ViewModels.Abstract;
+using Prism.Test.Models.Events;
+using Prism.Test.ViewModels;
+using Prism.Test.ViewModels.Abstract.Items;
 
 namespace Prism.Test.Managers
 {
-    public class LeftViewModelPropertyChangedHandler : ILeftViewModelPropertyChangedHandler, ICenterViewModelPropertyChangedListener, IRightViewModelPropertyChangedListener
+    class LeftViewModelPropertyChangedHandler : ILeftViewModelPropertyChangedHandler
     {
-        private readonly ILeftViewModel leftViewModel;
+        private LeftViewModel _viewModel;
 
-        public LeftViewModelPropertyChangedHandler(ILeftViewModel leftViewModel)
+        public LeftViewModelPropertyChangedHandler(IEventAggregator eventAggregator)
         {
-            this.leftViewModel = leftViewModel;
+            eventAggregator.GetEvent<LeftViewModelChangedEvent>().Subscribe(HandleLeftViewModelEvents);
         }
 
-        public Task<bool> OnSelfPropertyChanged(string propertyName)
+        public void Initialize(LeftViewModel source)
         {
-            throw new NotImplementedException();
+            _viewModel = source;
         }
 
-        Task<bool> ICenterViewModelPropertyChangedListener.OnPropertyChanged(string propertyName)
+        private void HandleLeftViewModelEvents(EventPayload eventPayload)
         {
-            throw new NotImplementedException();
+            var eventName = eventPayload.EventName;
+            switch (eventName)
+            {
+                case EventConstants.OnCategorySelected:
+                    OnCategorySelected(eventPayload.Data as CategoryItemViewModel);
+                    break;
+                default:
+                    break;
+            }
         }
 
-        Task<bool> IRightViewModelPropertyChangedListener.OnPropertyChanged(string propertyName)
+        private void OnCategorySelected(CategoryItemViewModel item)
         {
-            throw new NotImplementedException();
+            item.IsSelected = !item.IsSelected;
         }
     }
 }

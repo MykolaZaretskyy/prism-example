@@ -1,6 +1,8 @@
-﻿namespace Prism.Test.Managers.Abstract
+﻿using Prism.Test.ViewModels;
+
+namespace Prism.Test.Managers.Abstract
 {
-    public interface ICenterViewModelPropertyChangedHandler : IViewModelPropertyChangedHandler
+    public interface ICenterViewModelPropertyChangedHandler : IPropertyChangedHandler<CenterViewModel>
     {
     }
 }

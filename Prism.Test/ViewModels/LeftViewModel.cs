@@ -2,7 +2,8 @@
 using System.Windows.Input;
 using Prism.Commands;
 using Prism.Mvvm;
-using Prism.Test.Infrastracture;
+using Prism.Test.Helpers.EventRaiser;
+using Prism.Test.Models.Events;
 using Prism.Test.ViewModels.Abstract;
 using Prism.Test.ViewModels.Abstract.Items;
 
@@ -10,11 +11,11 @@ namespace Prism.Test.ViewModels
 {
     public class LeftViewModel : BindableBase, ILeftViewModel
     {
-        private readonly IPropertyChangedDipatcher propertyChangedDipatcher;
+        private readonly IEventRaiser _eventRaiser;
 
-        public LeftViewModel(IPropertyChangedDipatcher propertyChangedDipatcher)
+        public LeftViewModel(IEventRaiser eventRaiser)
         {
-            this.propertyChangedDipatcher = propertyChangedDipatcher;
+            _eventRaiser = eventRaiser;
 
             Categories = new List<CategoryItemViewModel>
             {
@@ -37,8 +38,7 @@ namespace Prism.Test.ViewModels
 
         private void OnCategorySelected(CategoryItemViewModel item)
         {
-            item.IsSelected = !item.IsSelected;
-            propertyChangedDipatcher.DispatchLeftViewModelChanged("TestEvent");
+            _eventRaiser.RaiseLeftEvent(EventPayload.Create(EventConstants.OnCategorySelected, item));
         }
     }
 }

@@ -1,28 +1,35 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using Prism.Events;
 using Prism.Test.Managers.Abstract;
+using Prism.Test.Models.Events;
+using Prism.Test.ViewModels;
 
 namespace Prism.Test.Managers
 {
-    public class RightViewModelPropertyChangedHandler : IRightViewModelPropertyChangedHandler, ILeftViewModelPropertyChangedListener, ICenterViewModelPropertyChangedListener
+    public class RightViewModelPropertyChangedHandler : IRightViewModelPropertyChangedHandler
     {
-        public RightViewModelPropertyChangedHandler()
+        private RightViewModel _viewModel;
+
+        public RightViewModelPropertyChangedHandler(IEventAggregator eventAggregator)
         {
+            eventAggregator.GetEvent<CenterViewModelChangedEvent>().Subscribe(HandleCenterViewModelEvents);
         }
 
-        public Task<bool> OnSelfPropertyChanged(string propertyName)
+        public void Initialize(RightViewModel source)
         {
-            throw new NotImplementedException();
+            _viewModel = source;
         }
 
-        Task<bool> ILeftViewModelPropertyChangedListener.OnPropertyChanged(string propertyName)
+        private void HandleCenterViewModelEvents(EventPayload eventPayload)
         {
-            throw new NotImplementedException();
-        }
-
-        Task<bool> ICenterViewModelPropertyChangedListener.OnPropertyChanged(string propertyName)
-        {
-            throw new NotImplementedException();
+            var eventName = eventPayload.EventName;
+            switch (eventName)
+            {
+                case EventConstants.OnSubcategoriesSet:
+                    _viewModel.RightText = (string) eventPayload.Data;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

@@ -17,12 +17,9 @@
     <PackageReference Include="System.Reactive.Linq" Version="4.3.2" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Folder Include="Infrastructure\" />
     <Folder Include="Views\" />
-    <Folder Include="Managers\" />
-    <Folder Include="Managers\Abstract\" />
     <Folder Include="ViewModels\Items\" />
     <Folder Include="Views\Controls\" />
-    <Folder Include="Infrastracture\" />
   </ItemGroup>
 </Project>

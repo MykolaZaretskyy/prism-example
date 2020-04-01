@@ -18,6 +18,17 @@
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>
+
+            <DataTemplate x:Key="SubCategoryCell">
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal">
+                        <Label
+                            Margin="15,0,0,0"
+                            Text="{Binding SubCategoryName}"
+                            VerticalOptions="Center" />
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -43,11 +54,9 @@
                 Grid.Column="1"
                 BindingContext="{Binding CenterViewModel}"
                 VerticalOptions="Fill">
-                <Label
-                    Margin="0,15,0,0"
-                    HorizontalOptions="Center"
-                    Text="{Binding Text}"
-                    VerticalOptions="Start" />
+                <controls:CustomListView
+                    ItemTemplate="{StaticResource SubCategoryCell}"
+                    ItemsSource="{Binding SubCategories}" />
             </Frame>
 
             <Frame
@@ -57,7 +66,7 @@
                 <Label
                     Margin="0,15,0,0"
                     HorizontalOptions="Center"
-                    Text="{Binding StaticText}"
+                    Text="{Binding RightText}"
                     VerticalOptions="Start" />
             </Frame>
         </Grid>

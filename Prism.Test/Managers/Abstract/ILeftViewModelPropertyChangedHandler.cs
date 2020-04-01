@@ -1,9 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using Prism.Test.ViewModels;
 
 namespace Prism.Test.Managers.Abstract
 {
-    public interface ILeftViewModelPropertyChangedHandler : IViewModelPropertyChangedHandler
+    public interface ILeftViewModelPropertyChangedHandler : IPropertyChangedHandler<LeftViewModel>
     {
-        Task<bool> OnSelfPropertyChanged(string propertyName);
     }
 }
