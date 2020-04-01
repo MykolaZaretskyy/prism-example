@@ -9,9 +9,9 @@ namespace Prism.Test.ViewModels
     {
         public CenterViewModel()
         {
-            SubCategories = new CusTomObservableCollection<SubCategoryItemViewModel>();
+            SubCategories = new CustomObservableCollection<SubCategoryItemViewModel>();
         }
 
-        public CusTomObservableCollection<SubCategoryItemViewModel> SubCategories { get; }
+        public CustomObservableCollection<SubCategoryItemViewModel> SubCategories { get; }
     }
 }
