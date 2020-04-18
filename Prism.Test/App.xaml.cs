@@ -1,7 +1,9 @@
 ﻿using Prism.Autofac;
 using Prism.Ioc;
+using Prism.Test.Models;
+using Prism.Test.Models.Abstract;
 using Prism.Test.ViewModels;
-using Prism.Test.ViewModels.Abstract;
+using Prism.Test.Views;
 using Xamarin.Forms;
 
 namespace Prism.Test
@@ -16,18 +18,21 @@ namespace Prism.Test
         protected override async void OnInitialized()
         {
             InitializeComponent();
-
-            await NavigationService.NavigateAsync("HomeView");
+            
+            await NavigationService.NavigateAsync("MenuOrderingPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<HomeView, HomeViewModel>();
+            containerRegistry.RegisterForNavigation<MenuOrderingPage, MenuOrderingPageViewModel>();
 
-            containerRegistry.RegisterSingleton<ILeftViewModel, LeftViewModel>();
-            containerRegistry.RegisterSingleton<ICenterViewModel, CenterViewModel>();
-            containerRegistry.RegisterSingleton<IRightViewModel, RightViewModel>();
+            //containerRegistry.RegisterSingleton<ICategoriesViewModel, CategoriesViewModel>();
+            //containerRegistry.RegisterSingleton<ICategoryItemsViewModel, CategoryItemsViewModel>();
+            //containerRegistry.RegisterSingleton<INutritionViewModel, YourOrderViewModel>();
+
+            containerRegistry.RegisterSingleton<ICategoriesModel, CategoriesModel>();
+            containerRegistry.RegisterSingleton<ICategoryItemsModel, CategoryItemsModel>();
         }
     }
 }

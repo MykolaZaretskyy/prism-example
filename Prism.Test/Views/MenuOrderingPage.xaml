@@ -1,0 +1,86 @@
+﻿<ContentPage x:Class="Prism.Test.Views.MenuOrderingPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Prism.Test.Views.Controls"
+             xmlns:converters="clr-namespace:Prism.Test.Converters;assembly=Prism.Test"
+             xmlns:templateSelectors="clr-namespace:Prism.Test.Views.TemplateSelectors;assembly=Prism.Test"
+             Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <converters:ListItemStateToBackgroundColorConverter x:Key="BackgroundColorConverter" />
+        <converters:ListItemStateToCheckedConverter x:Key="StateToIsCheckedConverter" />
+
+        <ResourceDictionary>
+            <DataTemplate x:Key="CategoryViewCell">
+                <ViewCell>
+                    <StackLayout BackgroundColor="{Binding State, Converter={StaticResource BackgroundColorConverter}}" Orientation="Horizontal">
+                        <Label Margin="15,0,0,0"
+                               Text="{Binding Text}"
+                               VerticalOptions="Center" />
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+
+            <DataTemplate x:Key="MenuOptionViewCell">
+                <ViewCell>
+                    <StackLayout BackgroundColor="{Binding State, Converter={StaticResource BackgroundColorConverter}}" Orientation="Horizontal">
+                        <CheckBox CheckedChanged="CheckBox_OnCheckedChanged" IsChecked="{Binding State, Converter={StaticResource StateToIsCheckedConverter}, Mode=OneWay}" />
+                        <Label Margin="15,0,0,0"
+                               Text="{Binding Text}"
+                               VerticalOptions="Center" />
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+
+            <DataTemplate x:Key="OrderedItemCell">
+                <ViewCell>
+                    <StackLayout BackgroundColor="{Binding State, Converter={StaticResource BackgroundColorConverter}}" Orientation="Horizontal">
+                        <Label Margin="15,0,0,0"
+                               Text="{Binding Text}"
+                               VerticalOptions="Center" />
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+
+            <templateSelectors:MenuItemDataTemplateSelector x:Key="SubCategoryTemplateSelector"
+                                                            CategoryCellDataTemplate="{StaticResource CategoryViewCell}"
+                                                            MenuOptionCellDataTemplate="{StaticResource MenuOptionViewCell}" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*" />
+                <ColumnDefinition Width="40*" />
+                <ColumnDefinition Width="30*" />
+            </Grid.ColumnDefinitions>
+
+            <Frame Grid.Column="0"
+                   BindingContext="{Binding CategoriesViewModel}"
+                   VerticalOptions="Fill">
+                <controls:CustomListView ItemSelectedCommand="{Binding CategorySelectedCommand}"
+                                         ItemTemplate="{StaticResource CategoryViewCell}"
+                                         ItemsSource="{Binding Categories}" />
+            </Frame>
+
+            <Frame Grid.Column="1"
+                   BindingContext="{Binding CategoryItemsViewModel}"
+                   VerticalOptions="Fill">
+                <controls:CustomListView x:Name="CategoryItemsList"
+                                         ItemCheckedCommand="{Binding MenuOptionCheckedCommand}"
+                                         ItemSelectedCommand="{Binding ListItemSelectedCommand}"
+                                         ItemTemplate="{StaticResource SubCategoryTemplateSelector}"
+                                         ItemsSource="{Binding SubCategories}" />
+            </Frame>
+
+            <Frame Grid.Column="2"
+                   BindingContext="{Binding YourOrderViewModel}"
+                   VerticalOptions="Fill">
+                <controls:CustomListView ItemTemplate="{StaticResource OrderedItemCell}" ItemsSource="{Binding OrderedItems}" />
+            </Frame>
+        </Grid>
+
+    </ContentPage.Content>
+
+</ContentPage>

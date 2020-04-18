@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Prism.Test.Helpers.CustomObservableCollection&lt;T&gt;" Collapsed="true">
+    <Position X="7.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAEAAA=</HashCode>
+      <FileName>Helpers\CustomObservableCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prism.Test.Managers.MealOrderingMediator" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAgAAAAAAAAAIIhAAAAAAAACAAAAAAEAAAA=</HashCode>
+      <FileName>Managers\MealOrderingMediator.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Prism.Test.Models.EventPayload" Collapsed="true">
+    <Position X="11.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAFAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\EventPayload.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prism.Test.ViewModels.Abstract.BaseSectionViewModel">
+    <Position X="3" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAACA=</HashCode>
+      <FileName>ViewModels\Abstract\BaseSectionViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prism.Test.ViewModels.Abstract.ViewModelBase" Collapsed="true">
+    <Position X="1.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAEAAAAAACAQAAABAAAQABAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Abstract\ViewModelBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Prism.Test.ViewModels.Items.CategoryItemViewModel" Collapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAEAAAAAAAAACAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Items\CategoryItemViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prism.Test.ViewModels.Items.SubCategoryItemViewModel" Collapsed="true">
+    <Position X="11.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAgAAA=</HashCode>
+      <FileName>ViewModels\Items\SubCategoryItemViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prism.Test.ViewModels.CategoriesViewModel">
+    <Position X="3" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAEAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\CategoriesViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Prism.Test.ViewModels.CategoryItemsViewModel" Collapsed="true">
+    <Position X="5.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAABQAAA=</HashCode>
+      <FileName>ViewModels\CategoryItemsViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Prism.Test.ViewModels.MenuOrderingPageViewModel">
+    <Position X="1.25" Y="9.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAgAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\MenuOrderingPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prism.Test.ViewModels.NutritionViewModel">
+    <Position X="0.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAACAAAAACAAAAAA=</HashCode>
+      <FileName>ViewModels\NutritionViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Prism.Test.Views.Controls.CustomListView" Collapsed="true">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Controls\CustomListView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prism.Test.Views.MenuOrderingPage" Collapsed="true">
+    <Position X="9.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\MenuOrderingPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prism.Test.App" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAECAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prism.Test.EventNames" Collapsed="true">
+    <Position X="9.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAABAAAA=</HashCode>
+      <FileName>EventNames.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Prism.Test.Managers.Abstract.IMealOrderingMediator" Collapsed="true">
+    <Position X="7.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Managers\Abstract\IMealOrderingMediator.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Prism.Test.ViewModels.Abstract.ICategoriesViewModel">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Abstract\ICategoriesViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Prism.Test.ViewModels.Abstract.ICategoryItemsViewModel">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>ViewModels\Abstract\ICategoryItemsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Prism.Test.ViewModels.Abstract.INutritionViewModel" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Abstract\INutritionViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
