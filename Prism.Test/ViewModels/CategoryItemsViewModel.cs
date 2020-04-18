@@ -8,6 +8,7 @@ using Prism.Test.Extensions;
 using Prism.Test.Helpers;
 using Prism.Test.Models;
 using Prism.Test.Models.Abstract;
+using Prism.Test.Models.Items;
 using Prism.Test.ViewModels.Abstract;
 
 namespace Prism.Test.ViewModels

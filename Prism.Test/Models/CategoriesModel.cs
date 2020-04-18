@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Prism.Mvvm;
 using Prism.Test.Models.Abstract;
+using Prism.Test.Models.Items;
 
 namespace Prism.Test.Models
 {

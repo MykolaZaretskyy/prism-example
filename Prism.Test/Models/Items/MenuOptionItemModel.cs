@@ -1,7 +1,6 @@
-﻿using Prism.Mvvm;
-using Prism.Test.Models.Abstract;
+﻿using Prism.Test.Models.Abstract;
 
-namespace Prism.Test.Models
+namespace Prism.Test.Models.Items
 {
     public class MenuOptionItemModel : MultiStateItemModel
     {

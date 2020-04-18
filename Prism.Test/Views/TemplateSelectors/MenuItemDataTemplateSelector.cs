@@ -1,5 +1,6 @@
 ﻿using System;
 using Prism.Test.Models;
+using Prism.Test.Models.Items;
 using Xamarin.Forms;
 
 namespace Prism.Test.Views.TemplateSelectors

@@ -2,7 +2,7 @@
 using System.Linq;
 using Prism.Test.Models.Abstract;
 
-namespace Prism.Test.Models
+namespace Prism.Test.Models.Items
 {
     public class CategoryItemModel : MultiStateItemModel
     {

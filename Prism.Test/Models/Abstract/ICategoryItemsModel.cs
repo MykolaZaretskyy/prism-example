@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using Prism.Test.Helpers;
+using Prism.Test.Models.Items;
 
 namespace Prism.Test.Models.Abstract
 {
