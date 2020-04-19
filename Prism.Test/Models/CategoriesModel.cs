@@ -25,16 +25,5 @@ namespace Prism.Test.Models
             get => _selectedCategory;
             set => SetProperty(ref _selectedCategory, value);
         }
-
-        public void OnCategorySelected(CategoryItemModel category)
-        {
-            if (SelectedCategory != null)
-            {
-                SelectedCategory.State = ListItemState.None;
-            }
-
-            category.State = ListItemState.Selected;
-            SelectedCategory = category;
-        }
     }
 }

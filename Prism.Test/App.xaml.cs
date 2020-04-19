@@ -1,5 +1,7 @@
 ﻿using Prism.Autofac;
 using Prism.Ioc;
+using Prism.Test.Managers;
+using Prism.Test.Managers.Abstract;
 using Prism.Test.Models;
 using Prism.Test.Models.Abstract;
 using Prism.Test.ViewModels;
@@ -27,12 +29,10 @@ namespace Prism.Test
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MenuOrderingPage, MenuOrderingPageViewModel>();
 
-            //containerRegistry.RegisterSingleton<ICategoriesViewModel, CategoriesViewModel>();
-            //containerRegistry.RegisterSingleton<ICategoryItemsViewModel, CategoryItemsViewModel>();
-            //containerRegistry.RegisterSingleton<INutritionViewModel, YourOrderViewModel>();
-
             containerRegistry.RegisterSingleton<ICategoriesModel, CategoriesModel>();
             containerRegistry.RegisterSingleton<ICategoryItemsModel, CategoryItemsModel>();
+            containerRegistry.RegisterSingleton<IYourOrderModel, YourOrderModel>();
+            containerRegistry.RegisterSingleton<ICategoriesManager, CategoriesManager>();
         }
     }
 }

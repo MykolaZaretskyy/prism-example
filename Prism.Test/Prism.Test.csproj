@@ -20,13 +20,5 @@
     <Compile Update="Views\MenuOrderingPage.xaml.cs">
       <DependentUpon>MenuOrderingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Remove="Managers\**" />
-    <Compile Remove="Extensions\ListItemStateExtensions.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Remove="Managers\**" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="Managers\**" />
   </ItemGroup>
 </Project>

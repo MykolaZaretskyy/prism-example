@@ -6,6 +6,7 @@ using System.Windows.Input;
 using Prism.Commands;
 using Prism.Test.Extensions;
 using Prism.Test.Helpers;
+using Prism.Test.Managers.Abstract;
 using Prism.Test.Models;
 using Prism.Test.Models.Abstract;
 using Prism.Test.Models.Items;
@@ -16,13 +17,13 @@ namespace Prism.Test.ViewModels
     public class CategoryItemsViewModel : BaseSectionViewModel
     {
         private readonly ICategoriesModel _categoriesModel;
-        private readonly ICategoryItemsModel _categoryItemsModel;
+        private readonly ICategoriesManager _categoriesManager;
         private readonly List<IDisposable> _disposables;
 
-        public CategoryItemsViewModel(ICategoriesModel categoriesModel, ICategoryItemsModel categoryItemsModel)
+        public CategoryItemsViewModel(ICategoriesModel categoriesModel, ICategoriesManager categoriesManager)
         {
             _categoriesModel = categoriesModel;
-            _categoryItemsModel = categoryItemsModel;
+            _categoriesManager = categoriesManager;
             _disposables = new List<IDisposable>();
             ListItemSelectedCommand = new DelegateCommand<MultiStateItemModel>(OnItemSelected);
             MenuOptionCheckedCommand = new DelegateCommand<MenuOptionItemModel>(OnMenuOptionChecked);
@@ -48,17 +49,16 @@ namespace Prism.Test.ViewModels
         private void OnParentCategoryChanged()
         {
             SubCategories.ReplaceWith(_categoriesModel.SelectedCategory.AllItems);
-            _categoryItemsModel.AllCategoryItems.ReplaceWith(SubCategories);
         }
 
         private void OnItemSelected(MultiStateItemModel item)
         {
-            _categoryItemsModel.OnFocusedItemChanged(item);
+            _categoriesManager.OnFocusedItemChanged(item);
         }
 
         private void OnMenuOptionChecked(MenuOptionItemModel menuOption)
         {
-            _categoryItemsModel.OnMenuOptionCheckedChanged(menuOption);
+            _categoriesManager.OnMenuOptionCheckedChanged(menuOption);
         }
     }
 }

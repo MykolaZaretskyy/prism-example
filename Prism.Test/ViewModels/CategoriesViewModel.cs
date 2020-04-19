@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
 using Prism.Commands;
+using Prism.Test.Managers.Abstract;
 using Prism.Test.Models;
 using Prism.Test.Models.Abstract;
 using Prism.Test.Models.Items;
@@ -11,10 +12,12 @@ namespace Prism.Test.ViewModels
     public class CategoriesViewModel : BaseSectionViewModel
     {
         private readonly ICategoriesModel _categoriesModel;
+        private readonly ICategoriesManager _categoriesManager;
 
-        public CategoriesViewModel(ICategoriesModel categoriesModel)
+        public CategoriesViewModel(ICategoriesModel categoriesModel, ICategoriesManager categoriesManager)
         {
             _categoriesModel = categoriesModel;
+            _categoriesManager = categoriesManager;
             Categories = categoriesModel.Categories;
 
             CategorySelectedCommand = new DelegateCommand<CategoryItemModel>(OnCategorySelected);
@@ -26,7 +29,7 @@ namespace Prism.Test.ViewModels
 
         private void OnCategorySelected(CategoryItemModel item)
         {
-            _categoriesModel.OnCategorySelected(item);
+            _categoriesManager.OnCategorySelected(item);
         }
     }
 }

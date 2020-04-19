@@ -7,7 +7,6 @@ namespace Prism.Test.Models.Abstract
     public interface ICategoriesModel : INotifyPropertyChanged
     {
         IList<CategoryItemModel> Categories { get; }
-        CategoryItemModel SelectedCategory { get; }
-        void OnCategorySelected(CategoryItemModel category);
+        CategoryItemModel SelectedCategory { get; set; }
     }
 }

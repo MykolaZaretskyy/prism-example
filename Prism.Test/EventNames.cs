@@ -1,8 +1,9 @@
 ﻿namespace Prism.Test
 {
+    /// <summary>
+    /// Event names constants to be used for custom events.
+    /// </summary>
     public static class EventNames
     {
-        public const string OnCategoryChanged = nameof(OnCategoryChanged);
-        public const string OnSubCategoriesSet = nameof(OnSubCategoriesSet);
     }
 }

@@ -14,12 +14,12 @@ namespace Prism.Test.ViewModels
 {
     public class YourOrderViewModel : BaseSectionViewModel
     {
+        private readonly IYourOrderModel _yourOrderModel;
         private readonly List<IDisposable> _disposables;
-        private readonly ICategoryItemsModel _categoryItemsModel;
 
-        public YourOrderViewModel(ICategoryItemsModel categoryItemsModel)
+        public YourOrderViewModel(IYourOrderModel yourOrderModel)
         {
-            _categoryItemsModel = categoryItemsModel;
+            _yourOrderModel = yourOrderModel;
             _disposables = new List<IDisposable>();
             SubscribeToEvents();
         }
@@ -28,33 +28,16 @@ namespace Prism.Test.ViewModels
 
         private void SubscribeToEvents()
         {
-            Observable.FromEventPattern<EventHandler<EventArgs<MenuOptionItemModel>>, EventArgs<MenuOptionItemModel>>(
-                    h => _categoryItemsModel.ItemAdded += h,
-                    h => _categoryItemsModel.ItemAdded -= h)
-                .Select(x => x.EventArgs.Data)
-                .Subscribe(AddItem)
-                .DisposeWith(_disposables);
-
-            Observable.FromEventPattern<EventHandler<EventArgs<MenuOptionItemModel>>, EventArgs<MenuOptionItemModel>>(
-                    h => _categoryItemsModel.ItemRemoved += h,
-                    h => _categoryItemsModel.ItemRemoved -= h)
-                .Select(x => x.EventArgs.Data)
-                .Subscribe(RemoveItem)
+            Observable.FromEventPattern<EventHandler, EventArgs>(
+                    h => _yourOrderModel.ItemsCountChanged += h,
+                    h => _yourOrderModel.ItemsCountChanged -= h)
+                .Subscribe(_ => ItemsCountChanged())
                 .DisposeWith(_disposables);
         }
 
-        private void AddItem(MenuOptionItemModel item)
+        private void ItemsCountChanged()
         {
-            OrderedItems.Add(new OrderedItemModel(item));
-        }
-
-        private void RemoveItem(MenuOptionItemModel item)
-        {
-            var itemToRemove = OrderedItems.FirstOrDefault(e => e.MenuOption == item);
-            if (itemToRemove != null)
-            {
-                OrderedItems.Remove(itemToRemove);
-            }
+            OrderedItems.ReplaceWith(_yourOrderModel.OrderedItems);
         }
     }
 }
