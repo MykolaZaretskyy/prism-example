@@ -10,15 +10,16 @@ namespace Prism.Test.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var state = (ListItemState)value;
-            switch (state)
+            if (state.HasFlag(ListItemState.Focused))
             {
-                case ListItemState.Focused:
-                    return Color.Cyan;
-                case ListItemState.Selected:
-                    return Color.Chartreuse;
-                default:
-                    return Color.White;
+                return Color.Cyan;
             }
+            if (state.HasFlag(ListItemState.Selected))
+            {
+                return Color.Chartreuse;
+            }
+
+            return Color.White;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -18,5 +18,17 @@ namespace Prism.Test.Models.Abstract
             get => _text;
             set => SetProperty(ref _text, value);
         }
+
+        public void AddState(ListItemState flag)
+        {
+            State |= flag;
+            // RaisePropertyChanged(nameof(State));
+        }
+        
+        public void RemoveState(ListItemState flag)
+        {
+            State &= ~flag;
+            // RaisePropertyChanged(nameof(State));
+        }
     }
 }

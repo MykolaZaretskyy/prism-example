@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Autofac.Features.GeneratedFactories;
 using Prism.Mvvm;
 using Prism.Test.Extensions;
 using Prism.Test.Helpers;
@@ -42,12 +43,8 @@ namespace Prism.Test.Models
 
         public void OnFocusedItemChanged(MultiStateItemModel listItem)
         {
-            if (FocusedItem != null)
-            {
-                FocusedItem.State = ListItemState.None;
-            }
-
-            listItem.State = ListItemState.Focused;
+            FocusedItem?.RemoveState(ListItemState.Focused);
+            listItem.AddState(ListItemState.Focused);
             FocusedItem = listItem;
         }
 
@@ -55,14 +52,12 @@ namespace Prism.Test.Models
         {
             if (listItem.State.HasFlag(ListItemState.Selected))
             {
-                listItem.State &= ~ListItemState.Selected;
-                listItem.State |= ListItemState.None;
+                listItem.RemoveState(ListItemState.Selected);
                 ItemRemoved?.Invoke(this, new EventArgs<MenuOptionItemModel>(listItem));
             }
             else
             {
-                listItem.State &= ~ListItemState.None;
-                listItem.State |= ListItemState.Selected;
+                listItem.AddState(ListItemState.Selected);
                 ItemAdded?.Invoke(this, new EventArgs<MenuOptionItemModel>(listItem));
             }
         }

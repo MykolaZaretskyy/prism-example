@@ -43,12 +43,12 @@ namespace Prism.Test.ViewModels
                 .DisposeWith(_disposables);
         }
 
-        public void AddItem(MenuOptionItemModel item)
+        private void AddItem(MenuOptionItemModel item)
         {
             OrderedItems.Add(new OrderedItemModel(item));
         }
 
-        public void RemoveItem(MenuOptionItemModel item)
+        private void RemoveItem(MenuOptionItemModel item)
         {
             var itemToRemove = OrderedItems.FirstOrDefault(e => e.MenuOption == item);
             if (itemToRemove != null)
