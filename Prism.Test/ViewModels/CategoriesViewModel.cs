@@ -2,7 +2,6 @@
 using System.Windows.Input;
 using Prism.Commands;
 using Prism.Test.Managers.Abstract;
-using Prism.Test.Models;
 using Prism.Test.Models.Abstract;
 using Prism.Test.Models.Items;
 using Prism.Test.ViewModels.Abstract;

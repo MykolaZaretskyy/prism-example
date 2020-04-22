@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 using System.Reactive.Linq;
 using Prism.Test.Extensions;
 using Prism.Test.Helpers;
-using Prism.Test.Models;
 using Prism.Test.Models.Abstract;
 using Prism.Test.Models.Items;
 using Prism.Test.ViewModels.Abstract;

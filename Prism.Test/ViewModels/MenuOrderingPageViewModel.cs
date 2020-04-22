@@ -1,19 +1,17 @@
 ﻿using Prism.Navigation;
-using Prism.Test.Managers.Abstract;
-using Prism.Test.Models.Abstract;
 using Prism.Test.ViewModels.Abstract;
 
 namespace Prism.Test.ViewModels
 {
     public class MenuOrderingPageViewModel : ViewModelBase
     {
-        public MenuOrderingPageViewModel(INavigationService navigationService, ICategoriesModel categoriesModel,
-            ICategoryItemsModel categoryItemsModel, IYourOrderModel yourOrderModel,
-            ICategoriesManager categoriesManager) : base(navigationService)
+        public MenuOrderingPageViewModel(INavigationService navigationService, CategoriesViewModel categoriesViewModel,
+            CategoryItemsViewModel categoryItemsViewModel,
+            YourOrderViewModel yourOrderViewModel) : base(navigationService)
         {
-            CategoriesViewModel = new CategoriesViewModel(categoriesModel, categoriesManager);
-            CategoryItemsViewModel = new CategoryItemsViewModel(categoriesModel, categoriesManager);
-            YourOrderViewModel = new YourOrderViewModel(yourOrderModel);
+            CategoriesViewModel = categoriesViewModel;
+            CategoryItemsViewModel = categoryItemsViewModel;
+            YourOrderViewModel = yourOrderViewModel;
         }
 
         public CategoriesViewModel CategoriesViewModel { get; }

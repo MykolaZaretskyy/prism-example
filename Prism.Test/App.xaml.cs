@@ -30,9 +30,13 @@ namespace Prism.Test
             containerRegistry.RegisterForNavigation<MenuOrderingPage, MenuOrderingPageViewModel>();
 
             containerRegistry.RegisterSingleton<ICategoriesModel, CategoriesModel>();
-            containerRegistry.RegisterSingleton<ICategoryItemsModel, CategoryItemsModel>();
             containerRegistry.RegisterSingleton<IYourOrderModel, YourOrderModel>();
             containerRegistry.RegisterSingleton<ICategoriesManager, CategoriesManager>();
+            containerRegistry.RegisterSingleton<IOrderManager, OrderManager>();
+            
+            containerRegistry.Register<CategoriesViewModel>();
+            containerRegistry.Register<CategoryItemsViewModel>();
+            containerRegistry.Register<YourOrderViewModel>();
         }
     }
 }

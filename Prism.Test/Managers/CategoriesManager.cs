@@ -7,43 +7,44 @@ namespace Prism.Test.Managers
     public class CategoriesManager : ICategoriesManager
     {
         private readonly ICategoriesModel _categoriesModel;
-        private readonly ICategoryItemsModel _categoryItemsModel;
         private readonly IYourOrderModel _yourOrderModel;
 
-        public CategoriesManager(ICategoriesModel categoriesModel, ICategoryItemsModel categoryItemsModel, IYourOrderModel yourOrderModel)
+        public CategoriesManager(ICategoriesModel categoriesModel, IYourOrderModel yourOrderModel)
         {
             _categoriesModel = categoriesModel;
-            _categoryItemsModel = categoryItemsModel;
             _yourOrderModel = yourOrderModel;
         }
 
         public void OnCategorySelected(CategoryItemModel category)
         {
-            var selectedCategory = _categoriesModel.SelectedCategory;
-            selectedCategory?.RemoveState(ListItemState.Selected);
-            category.AddState(ListItemState.Selected);
+            CategorySelectedImpl(category);
             _categoriesModel.SelectedCategory = category;
         }
 
-        public void OnFocusedItemChanged(MultiStateItemModel listItem)
+        public void OnSubCategorySelected(CategoryItemModel subCategory)
         {
-            _categoryItemsModel.FocusedItem?.RemoveState(ListItemState.Focused);
-            listItem.AddState(ListItemState.Focused);
-            _categoryItemsModel.FocusedItem = listItem;
+            CategorySelectedImpl(subCategory);
         }
-
-        public void OnMenuOptionCheckedChanged(MenuOptionItemModel listItem)
+        
+        public void OnMenuOptionCheckedChanged(MenuOptionItemModel menuOption)
         {
-            if (listItem.State.HasFlag(ListItemState.Selected))
+            if (menuOption.State.HasFlag(ListItemState.Selected))
             {
-                listItem.RemoveState(ListItemState.Selected);
-                _yourOrderModel.RemoveOrderedItem(listItem);
+                menuOption.RemoveState(ListItemState.Selected);
+                _yourOrderModel.RemoveOrderedItem(menuOption);
             }
             else
             {
-                listItem.AddState(ListItemState.Selected);
-                _yourOrderModel.AddOrderedItem(listItem);
+                menuOption.AddState(ListItemState.Selected);
+                _yourOrderModel.AddOrderedItem(menuOption);
             }
+        }
+
+        private void CategorySelectedImpl(CategoryItemModel category)
+        {
+            var selectedCategory = _categoriesModel.SelectedCategory;
+            selectedCategory?.RemoveState(ListItemState.Selected);
+            category.AddState(ListItemState.Selected);
         }
     }
 }

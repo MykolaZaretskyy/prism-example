@@ -22,13 +22,11 @@ namespace Prism.Test.Models.Abstract
         public void AddState(ListItemState flag)
         {
             State |= flag;
-            // RaisePropertyChanged(nameof(State));
         }
         
         public void RemoveState(ListItemState flag)
         {
             State &= ~flag;
-            // RaisePropertyChanged(nameof(State));
         }
     }
 }

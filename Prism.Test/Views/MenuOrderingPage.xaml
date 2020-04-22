@@ -24,7 +24,7 @@
             <DataTemplate x:Key="MenuOptionViewCell">
                 <ViewCell>
                     <StackLayout BackgroundColor="{Binding State, Converter={StaticResource BackgroundColorConverter}}" Orientation="Horizontal">
-                        <CheckBox CheckedChanged="CheckBox_OnCheckedChanged" IsChecked="{Binding State, Converter={StaticResource StateToIsCheckedConverter}, Mode=OneWay}" />
+                        <controls:StateCheckBox CheckedChangedCommand="{Binding CheckedChangedCommand}" IsChecked="{Binding State, Converter={StaticResource StateToIsCheckedConverter}, Mode=OneWay}" />
                         <Label Margin="15,0,0,0"
                                Text="{Binding Text}"
                                VerticalOptions="Center" />
@@ -67,11 +67,9 @@
             <Frame Grid.Column="1"
                    BindingContext="{Binding CategoryItemsViewModel}"
                    VerticalOptions="Fill">
-                <controls:CustomListView x:Name="CategoryItemsList"
-                                         ItemCheckedCommand="{Binding MenuOptionCheckedCommand}"
-                                         ItemSelectedCommand="{Binding ListItemSelectedCommand}"
+                <controls:CustomListView ItemSelectedCommand="{Binding ListItemSelectedCommand}"
                                          ItemTemplate="{StaticResource SubCategoryTemplateSelector}"
-                                         ItemsSource="{Binding SubCategories}" />
+                                         ItemsSource="{Binding CategoryItems}" />
             </Frame>
 
             <Frame Grid.Column="2"

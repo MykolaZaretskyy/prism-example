@@ -6,7 +6,7 @@ namespace Prism.Test.Managers.Abstract
     public interface ICategoriesManager
     {
         void OnCategorySelected(CategoryItemModel category);
-        void OnFocusedItemChanged(MultiStateItemModel listItem);
-        void OnMenuOptionCheckedChanged(MenuOptionItemModel listItem);
+        void OnSubCategorySelected(CategoryItemModel subCategory);
+        void OnMenuOptionCheckedChanged(MenuOptionItemModel menuOption);
     }
 }

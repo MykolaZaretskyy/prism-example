@@ -15,8 +15,6 @@ namespace Prism.Test.Models.Items
 
         public IList<MenuOptionItemModel> MenuOptions { get; private set; }
 
-        public IEnumerable<MultiStateItemModel> AllItems => SubCategories?.Concat(MenuOptions.Cast<MultiStateItemModel>());
-
         public CategoryItemModel PopulateWithData()
         {
             SubCategories = new List<CategoryItemModel>

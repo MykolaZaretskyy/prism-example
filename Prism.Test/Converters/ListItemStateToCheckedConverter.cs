@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace Prism.Test.Converters
 {
-    class ListItemStateToCheckedConverter : IValueConverter
+    public class ListItemStateToCheckedConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

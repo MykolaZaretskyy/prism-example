@@ -19,12 +19,6 @@ namespace Prism.Test.Models
             
         }
 
-        public IList<MultiStateItemModel> AllCategoryItems { get; } = new List<MultiStateItemModel>();
-
-        public IEnumerable<CategoryItemModel> SubCategories => AllCategoryItems.OfType<CategoryItemModel>();
-
-        public IEnumerable<MenuOptionItemModel> MenuOptions => AllCategoryItems.OfType<MenuOptionItemModel>();
-
         public MultiStateItemModel FocusedItem
         {
             get => _focusedItem;
