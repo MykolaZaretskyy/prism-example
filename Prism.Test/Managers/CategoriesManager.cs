@@ -17,13 +17,14 @@ namespace Prism.Test.Managers
 
         public void OnCategorySelected(CategoryItemModel category)
         {
-            CategorySelectedImpl(category);
+            CategorySelectedImpl(_categoriesModel.SelectedCategory, category);
             _categoriesModel.SelectedCategory = category;
         }
 
         public void OnSubCategorySelected(CategoryItemModel subCategory)
         {
-            CategorySelectedImpl(subCategory);
+            CategorySelectedImpl(_categoriesModel.SelectedSubCategory,subCategory);
+            _categoriesModel.SelectedSubCategory = subCategory;
         }
         
         public void OnMenuOptionCheckedChanged(MenuOptionItemModel menuOption)
@@ -40,11 +41,10 @@ namespace Prism.Test.Managers
             }
         }
 
-        private void CategorySelectedImpl(CategoryItemModel category)
+        private void CategorySelectedImpl(CategoryItemModel previousSelectedCategory, CategoryItemModel newSelectedCategory)
         {
-            var selectedCategory = _categoriesModel.SelectedCategory;
-            selectedCategory?.RemoveState(ListItemState.Selected);
-            category.AddState(ListItemState.Selected);
+            previousSelectedCategory?.RemoveState(ListItemState.Selected);
+            newSelectedCategory.AddState(ListItemState.Selected);
         }
     }
 }

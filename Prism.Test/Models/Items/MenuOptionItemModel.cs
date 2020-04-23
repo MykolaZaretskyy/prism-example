@@ -11,15 +11,20 @@ namespace Prism.Test.Models.Items
         public MenuOptionItemModel(string displayName)
         {
             Text = displayName;
-            CheckedChangedCommand = new DelegateCommand<bool>(OnCheckedChanged);
+            CheckedChangedCommand = new DelegateCommand<bool?>(OnCheckedChanged);
         }
 
         public event EventHandler<EventArgs<MenuOptionItemModel>> CheckedChanged; 
         
         public ICommand CheckedChangedCommand { get; }
         
-        private void OnCheckedChanged(bool isChecked)
+        private void OnCheckedChanged(bool? isChecked)
         {
+            if ((isChecked.Value && State.HasFlag(ListItemState.Selected)) || (!isChecked.Value && !State.HasFlag(ListItemState.Selected)))
+            {
+                return;
+            }
+
             CheckedChanged?.Invoke(this, new EventArgs<MenuOptionItemModel>(this));
         }
     }

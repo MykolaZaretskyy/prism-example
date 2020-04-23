@@ -21,7 +21,7 @@ namespace Prism.Test.Views.Controls
 
         private void OnCheckedChanged(object sender, CheckedChangedEventArgs e)
         {
-            CheckedChangedCommand?.Execute(null);
+            CheckedChangedCommand?.Execute(e.Value);
         }
     }
 }

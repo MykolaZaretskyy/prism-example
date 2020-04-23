@@ -47,12 +47,13 @@ namespace Prism.Test.ViewModels
         
         private void SubscribeMenuOptionsEvents()
         {
-            foreach (var item in CategoryItems.OfType<MenuOptionItemModel>())
+            var menuOptions = CategoryItems.OfType<MenuOptionItemModel>();
+            foreach (var item in menuOptions)
             {
                 Observable.FromEventPattern<EventHandler<EventArgs<MenuOptionItemModel>>, EventArgs<MenuOptionItemModel>>(
                         h => item.CheckedChanged += h,
                         h => item.CheckedChanged -= h)
-                    .Subscribe(_ => OnMenuOptionCheckedChanged(item))
+                    .Subscribe(e => OnMenuOptionCheckedChanged(e.EventArgs.Data))
                     .DisposeWith(_menuOptionsDisposables);
             }
         }

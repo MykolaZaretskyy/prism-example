@@ -8,6 +8,8 @@ namespace Prism.Test.Models.Abstract
     {
         IList<CategoryItemModel> Categories { get; }
         CategoryItemModel SelectedCategory { get; set; }
+
+        CategoryItemModel SelectedSubCategory { get; set; }
         IList<object> CategoryItems { get; }
     }
 }
