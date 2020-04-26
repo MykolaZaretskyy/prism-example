@@ -67,9 +67,17 @@
             <Frame Grid.Column="1"
                    BindingContext="{Binding CategoryItemsViewModel}"
                    VerticalOptions="Fill">
-                <controls:CustomListView ItemSelectedCommand="{Binding ListItemSelectedCommand}"
-                                         ItemTemplate="{StaticResource SubCategoryTemplateSelector}"
-                                         ItemsSource="{Binding CategoryItems}" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Button Text="Back" BackgroundColor="Teal" IsVisible="{Binding IsBackVisible}" Command="{Binding BackCommand}"/>
+                    <controls:CustomListView Grid.Row="1"
+                                             ItemSelectedCommand="{Binding ListItemSelectedCommand}"
+                                             ItemTemplate="{StaticResource SubCategoryTemplateSelector}"
+                                             ItemsSource="{Binding CategoryItems}" />
+                </Grid>
             </Frame>
 
             <Frame Grid.Column="2"

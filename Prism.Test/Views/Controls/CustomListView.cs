@@ -11,18 +11,13 @@ namespace Prism.Test.Views.Controls
 
         public CustomListView()
         {
-            ItemSelected += (s, e) => ItemSelectedCommand?.Execute(e.SelectedItem);
+            ItemTapped += (s, e) => ItemSelectedCommand?.Execute(e.Item);
         }
 
         public ICommand ItemSelectedCommand
         {
             get => (ICommand)GetValue(ItemSelectedCommandProperty);
             set => SetValue(ItemSelectedCommandProperty, value);
-        }
-
-        protected override void OnPropertyChanged(string propertyName = null)
-        {
-            base.OnPropertyChanged(propertyName);
         }
     }
 }

@@ -7,9 +7,15 @@ namespace Prism.Test.Models.Abstract
     public interface ICategoriesModel : INotifyPropertyChanged
     {
         IList<CategoryItemModel> Categories { get; }
-        CategoryItemModel SelectedCategory { get; set; }
+        
+        CategoryItemModel SelectedCategory { get; }
 
-        CategoryItemModel SelectedSubCategory { get; set; }
+        CategoryItemModel SelectedSubCategory { get; }
+        
         IList<object> CategoryItems { get; }
+
+        void SetSelectedCategory(CategoryItemModel selectedCategory);
+
+        void SetSelectedSubCategory(CategoryItemModel selectedSubCategory, bool notifyPropertyChanged = true);
     }
 }

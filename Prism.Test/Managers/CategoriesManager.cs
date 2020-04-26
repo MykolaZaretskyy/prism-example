@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using Prism.Test.Managers.Abstract;
 using Prism.Test.Models.Abstract;
 using Prism.Test.Models.Items;
@@ -8,23 +10,30 @@ namespace Prism.Test.Managers
     {
         private readonly ICategoriesModel _categoriesModel;
         private readonly IYourOrderModel _yourOrderModel;
+        private readonly Stack<CategoryItemModel> _subCategoriesNavigationStack;
 
         public CategoriesManager(ICategoriesModel categoriesModel, IYourOrderModel yourOrderModel)
         {
             _categoriesModel = categoriesModel;
             _yourOrderModel = yourOrderModel;
+            _subCategoriesNavigationStack = new Stack<CategoryItemModel>();
         }
 
         public void OnCategorySelected(CategoryItemModel category)
         {
             CategorySelectedImpl(_categoriesModel.SelectedCategory, category);
-            _categoriesModel.SelectedCategory = category;
+            _categoriesModel.SetSelectedCategory(category);
+            _categoriesModel.SetSelectedSubCategory(null, false);
         }
 
         public void OnSubCategorySelected(CategoryItemModel subCategory)
         {
-            CategorySelectedImpl(_categoriesModel.SelectedSubCategory,subCategory);
-            _categoriesModel.SelectedSubCategory = subCategory;
+            if (_categoriesModel.SelectedSubCategory != null)
+            {
+                _subCategoriesNavigationStack.Push(subCategory);
+            }
+            
+            _categoriesModel.SetSelectedSubCategory(subCategory);
         }
         
         public void OnMenuOptionCheckedChanged(MenuOptionItemModel menuOption)
@@ -39,6 +48,14 @@ namespace Prism.Test.Managers
                 menuOption.AddState(ListItemState.Selected);
                 _yourOrderModel.AddOrderedItem(menuOption);
             }
+        }
+
+        public void OnBackNavigation()
+        {
+            var selectedSubCategory = _subCategoriesNavigationStack.Any()
+                ? _subCategoriesNavigationStack.Pop()
+                : null;
+            _categoriesModel.SetSelectedSubCategory(selectedSubCategory);
         }
 
         private void CategorySelectedImpl(CategoryItemModel previousSelectedCategory, CategoryItemModel newSelectedCategory)

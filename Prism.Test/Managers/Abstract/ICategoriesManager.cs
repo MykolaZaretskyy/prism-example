@@ -8,5 +8,6 @@ namespace Prism.Test.Managers.Abstract
         void OnCategorySelected(CategoryItemModel category);
         void OnSubCategorySelected(CategoryItemModel subCategory);
         void OnMenuOptionCheckedChanged(MenuOptionItemModel menuOption);
+        void OnBackNavigation();
     }
 }

@@ -14,10 +14,10 @@ namespace Prism.Test.Models.Items
             CheckedChangedCommand = new DelegateCommand<bool?>(OnCheckedChanged);
         }
 
-        public event EventHandler<EventArgs<MenuOptionItemModel>> CheckedChanged; 
-        
+        public event EventHandler<EventArgs<MenuOptionItemModel>> CheckedChanged;
+
         public ICommand CheckedChangedCommand { get; }
-        
+
         private void OnCheckedChanged(bool? isChecked)
         {
             if ((isChecked.Value && State.HasFlag(ListItemState.Selected)) || (!isChecked.Value && !State.HasFlag(ListItemState.Selected)))
