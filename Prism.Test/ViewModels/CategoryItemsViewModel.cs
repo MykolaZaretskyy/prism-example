@@ -51,14 +51,14 @@ namespace Prism.Test.ViewModels
                     h => _categoriesModel.PropertyChanged += h,
                     h => _categoriesModel.PropertyChanged -= h)
                 .Where(x => x.EventArgs.PropertyName == nameof(ICategoriesModel.SelectedCategory))
-                .Subscribe(_ => OnCategoryChanged())
+                .Subscribe(_ => OnItemsChanged())
                 .DisposeWith(_disposables);
             
             Observable.FromEventPattern<PropertyChangedEventHandler, PropertyChangedEventArgs>(
                     h => _categoriesModel.PropertyChanged += h,
                     h => _categoriesModel.PropertyChanged -= h)
                 .Where(x => x.EventArgs.PropertyName == nameof(ICategoriesModel.SelectedSubCategory))
-                .Subscribe(_ => OnSubCategoryChanged())
+                .Subscribe(_ => OnItemsChanged())
                 .DisposeWith(_disposables);
         }
         
@@ -80,19 +80,9 @@ namespace Prism.Test.ViewModels
             _menuOptionsDisposables.DisposeAll();
         }
 
-        private void OnCategoryChanged()
-        {
-            OnCategoryItemsChanged();
-        }
-        
-        private void OnSubCategoryChanged()
+        private void OnItemsChanged()
         {
             IsBackVisible = _categoriesModel.SelectedSubCategory != null;
-            OnCategoryItemsChanged();
-        }
-
-        private void OnCategoryItemsChanged()
-        {
             if (CategoryItems.Any())
             {
                 UnsubscribeMenuOptionsEvents();

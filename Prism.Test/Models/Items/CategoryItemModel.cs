@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Prism.Test.Models.Abstract;
+using Xamarin.Forms;
 
 namespace Prism.Test.Models.Items
 {
@@ -9,29 +10,28 @@ namespace Prism.Test.Models.Items
         public CategoryItemModel(string displayName)
         {
             Text = displayName;
+            SubCategories = new List<CategoryItemModel>();
+            MenuOptions = new List<MenuOptionItemModel>();
         }
 
         public IList<CategoryItemModel> SubCategories { get; private set; }
 
         public IList<MenuOptionItemModel> MenuOptions { get; private set; }
-        
-        public CategoryItemModel PopulateWithData(string text)
-        {
-            SubCategories = new List<CategoryItemModel>
-            {
-                new CategoryItemModel($"Subcategory 1 of {text}"),
-                new CategoryItemModel($"Subcategory 2 of {text}"),
-                new CategoryItemModel($"Subcategory 3 of {text}"),
-            };
 
-            MenuOptions = new List<MenuOptionItemModel>
+        public CategoryItemModel PopulateWithData(int category, int level, bool includeSubCategories)
+        {
+            if (includeSubCategories)
             {
-                new MenuOptionItemModel($"Menu option 1 of {text}"),
-                new MenuOptionItemModel($"Menu option 2 of {text}"),
-                new MenuOptionItemModel($"Menu option 3 of {text}"),
-                new MenuOptionItemModel($"Menu option 4 of {text}"),
-                new MenuOptionItemModel($"Menu option 5 of {text}"),
-            };
+                for (var i = 0; i < 3; i++)
+                {
+                    SubCategories.Add(new CategoryItemModel($"Sub {i} of Category {category}, Level {level}"));
+                }
+            }
+
+            for (var i = 0; i < 5; i++)
+            {
+                MenuOptions.Add(new MenuOptionItemModel($"Menu option {i} of Category {category}, Level {level}"));
+            }
 
             return this;
         }

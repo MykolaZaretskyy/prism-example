@@ -22,15 +22,15 @@ namespace Prism.Test.Managers
         public void OnCategorySelected(CategoryItemModel category)
         {
             CategorySelectedImpl(_categoriesModel.SelectedCategory, category);
-            _categoriesModel.SetSelectedCategory(category);
             _categoriesModel.SetSelectedSubCategory(null, false);
+            _categoriesModel.SetSelectedCategory(category);
         }
 
         public void OnSubCategorySelected(CategoryItemModel subCategory)
         {
             if (_categoriesModel.SelectedSubCategory != null)
             {
-                _subCategoriesNavigationStack.Push(subCategory);
+                _subCategoriesNavigationStack.Push(_categoriesModel.SelectedSubCategory);
             }
             
             _categoriesModel.SetSelectedSubCategory(subCategory);

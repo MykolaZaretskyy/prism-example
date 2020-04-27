@@ -14,18 +14,26 @@ namespace Prism.Test.Models
         {
             Categories = new List<CategoryItemModel>
             {
-                new CategoryItemModel("Category 1").PopulateWithData("0"),
-                new CategoryItemModel("Category 2").PopulateWithData("1"),
-                new CategoryItemModel("Category 3").PopulateWithData("2"),
+                new CategoryItemModel("Category 1"),
+                new CategoryItemModel("Category 2"),
+                new CategoryItemModel("Category 3"),
             };
 
-            foreach (var category in Categories)
+            GenerateData(Categories.ToList(), 2);
+        }
+
+        private void GenerateData(List<CategoryItemModel> list, int level)
+        {
+            if (level < 0)
             {
-                for (var i = 0; i < category.SubCategories.Count; i++)
-                {
-                    var subCat = category.SubCategories[i];
-                    subCat.PopulateWithData($"{i}{i}");
-                }
+                return;
+            }
+            
+            for (var i = 0; i < list.Count; i++)
+            {
+                var c = list[i];
+                c.PopulateWithData(i+1, level, level > 0);
+                GenerateData(c.SubCategories.ToList(), level - 1);
             }
         }
 
